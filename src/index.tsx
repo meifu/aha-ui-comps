@@ -1,15 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Root from './routes/root';
+
 import reportWebVitals from './reportWebVitals';
+import Password from './routes/Password';
+import Calendar from './routes/Calendar';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <div>Not found</div>,
+    children: [
+      {
+        path: 'password',
+        element: <Password />,
+      },
+      {
+        path: 'calendar',
+        element: <Calendar />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
