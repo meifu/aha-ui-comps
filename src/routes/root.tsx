@@ -1,4 +1,4 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 
 export default function Root() {
   return (
@@ -16,10 +16,24 @@ export default function Root() {
 
         <nav className="p-4" data-testid="navigation">
           <div>
-            <Link to="/password">Password Input</Link>
+            <NavLink
+              to="/password"
+              className={({ isActive }) => {
+                return isActive ? 'border-b' : ''
+              }}
+            >
+              Password Input
+            </NavLink>
           </div>
           <div>
-            <Link to="/calendar">Calendar</Link>
+            <NavLink
+              to="/calendar"
+              className={({ isActive }) => {
+                return isActive ? 'border-b' : ''
+              }}
+            >
+              Calendar
+            </NavLink>
           </div>
         </nav>
       </div>
