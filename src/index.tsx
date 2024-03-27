@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Root from './routes/root';
 
@@ -14,6 +14,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <div>Not found</div>,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/password" replace />,
+      },
       {
         path: 'password',
         element: <Password />,
